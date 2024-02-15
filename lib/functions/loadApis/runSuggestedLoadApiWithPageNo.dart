@@ -14,9 +14,6 @@ runSuggestedLoadApiWithPageNo(int i) async {
       fileName: ".env"); // Calling the env get method through dot_env------
 
   String loadApiUrl = dotenv.get("loadApiUrl").toString();
-
-  debugPrint(
-      "$loadApiUrl--------------LOAD API URL (runSuggestedLoadApiWithPageNo)-----------------------");
   // --------------
   var jsonData;
   var loadData = [];
@@ -143,9 +140,6 @@ runWidgetSuggestedLoadApiWithPageNo(int i) async {
       fileName: ".env"); // Calling the env get method through dot_env------
 
   String loadApiUrl = dotenv.get('loadApiUrl').toString();
-
-  debugPrint(
-      "$loadApiUrl--------------LOAD API URL (runWidgetSuggestedLoadApiWithPageNo)-----------------------");
   // --------------
   var jsonData;
   var loadData = [];
