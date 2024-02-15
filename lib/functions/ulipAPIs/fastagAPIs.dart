@@ -9,7 +9,7 @@ import '../../models/fastagModel.dart';
 class checkFastTag {
   //Fetch the fastag location of any truck
   getVehicleLocation(String vehicle) async {
-    final String url = dotenv.get("fastagApiUrl");
+    final String url = dotenv.get("fastTag");
 
     final Map<String, dynamic> params = {"vehiclenumber": vehicle};
 

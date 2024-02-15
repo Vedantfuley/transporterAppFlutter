@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../../models/vahanApisModel.dart';
 
 Future<VehicleDetails> fetchVehicleDetails(String vehicleNumber) async {
-  final String vahanApiUrl = dotenv.get('vahanApiUrl').toString();
+  final String vahanApiUrl = dotenv.get('vahanUrl').toString();
 
   // Create the request body
   final requestBody = jsonEncode({
