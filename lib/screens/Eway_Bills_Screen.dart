@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -9,13 +8,13 @@ import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
 import 'package:liveasy/constants/screens.dart';
 import 'package:liveasy/functions/eway_bill_api.dart';
+import 'package:liveasy/screens/fastagScreen.dart';
 import 'package:liveasy/screens/isolatedTransporterGetData.dart';
 import 'package:liveasy/screens/track_all_fastag_screen.dart';
 import 'package:liveasy/widgets/EwayBill_Table_Header.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'Eway_Bill_Details_Screen.dart';
-import 'FastTagScreen.dart';
 
 class EwayBills extends StatefulWidget {
   const EwayBills({super.key});

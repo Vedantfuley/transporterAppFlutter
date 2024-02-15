@@ -4,24 +4,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:custom_info_window/custom_info_window.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/responsive.dart';
 import 'package:liveasy/widgets/MobileMap.dart';
 import 'package:liveasy/widgets/fastagWebWidget.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
-import '../constants/fontSize.dart';
-import '../constants/fontWeights.dart';
-import '../constants/spaces.dart';
-import '../functions/ulipAPIs/fastagAPIs.dart';
-import '../models/fastagModel.dart';
-import '../widgets/buttons/helpButton.dart';
-import '../widgets/fastagTimeline.dart';
+import 'package:liveasy/functions/ulipAPIs/fastagAPIs.dart';
 
 //This screen will display fastag Details
 class MapScreen extends StatefulWidget {
@@ -57,11 +48,7 @@ class _MapScreenState extends State<MapScreen> {
   var maptype = MapType.normal;
   var col1 = const Color(0xff878787);
   var col2 = const Color(0xffFF5C00);
-  final List<String> paths = [
-    'assets/icons/fastagIcon.png',
-    'assets/icons/fastagIcon.png',
-    'assets/icons/fastagIcon.png',
-  ];
+  final String? paths = 'assets/icons/fastagIcon.png';
   List<BitmapDescriptor> customMarkerIcons = [];
   List<dynamic>? locations;
 
@@ -140,8 +127,13 @@ class _MapScreenState extends State<MapScreen> {
       if (geoCodeParts.length == 2) {
         final double latitude = double.tryParse(geoCodeParts[0]) ?? 0.0;
         final double longitude = double.tryParse(geoCodeParts[1]) ?? 0.0;
-
-        final Uint8List marker = await getBytesFromAssets(paths[i], 35);
+        setState(() {
+          currentCameraPosition = CameraPosition(
+            target: LatLng(latitude, longitude),
+            zoom: 12.0,
+          );
+        });
+        final Uint8List marker = await getBytesFromAssets(paths!, 35);
 
         _markers.add(Marker(
             markerId: MarkerId(i.toString()),
