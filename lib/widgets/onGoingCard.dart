@@ -19,8 +19,6 @@ import 'linePainter.dart';
 class OngoingCard extends StatefulWidget {
   final OngoingCardModel loadAllDataModel;
 
-  // final GpsDataModel gpsData;
-
   OngoingCard({
     required this.loadAllDataModel,
   });
@@ -71,11 +69,6 @@ class _OngoingCardState extends State<OngoingCard> {
 
     return GestureDetector(
       onTap: () {
-        // Get.to(() =>
-        // OnGoingLoadDetails(
-        //       loadALlDataModel: widget.loadAllDataModel,
-        //       trackIndicator: false,
-        //     ));
         Get.to(documentUploadScreen(
           loadAllDataModel: widget.loadAllDataModel,
           bookingId: widget.loadAllDataModel.bookingId.toString(),
@@ -87,23 +80,15 @@ class _OngoingCardState extends State<OngoingCard> {
           driverPhoneNum: widget.loadAllDataModel.driverPhoneNum,
           driverName: widget.loadAllDataModel.driverName,
           bookingDate: widget.loadAllDataModel.bookingDate,
-          // refreshParent: (
-          //   bool x,
-          // ) {},
-          // trackApproved: true,
           gpsDataList: gpsDataList,
-          // widget.gpsDataList,
           totalDistance: totalDistance,
-          //  widget.totalDistance,
-          // device: gpsData.deviceId,
-          // gpsData!.deviceId
-          // widget.device,
         ));
       },
       child: gpsDataList.isNotEmpty
           ? Container(
               margin: EdgeInsets.only(bottom: space_3),
               child: Card(
+                surfaceTintColor: transparent,
                 elevation: 5,
                 child: Column(
                   children: [

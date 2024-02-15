@@ -22,6 +22,7 @@ import 'priceContainer.dart';
 import 'package:get/get.dart';
 import 'package:liveasy/functions/loadApiCalls.dart';
 import 'package:liveasy/screens/PostLoadScreens/postloadnavigation.dart';
+
 // ignore: must_be_immutable
 class MyLoadsCard extends StatelessWidget {
   LoadDetailsScreenModel loadDetailsScreenModel;
@@ -35,8 +36,8 @@ class MyLoadsCard extends StatelessWidget {
     if (truckFilterVariables.truckTypeValueList
         .contains(loadDetailsScreenModel.truckType)) {
       loadDetailsScreenModel.truckType = truckFilterVariables.truckTypeTextList[
-      truckFilterVariables.truckTypeValueList
-          .indexOf(loadDetailsScreenModel.truckType)];
+          truckFilterVariables.truckTypeValueList
+              .indexOf(loadDetailsScreenModel.truckType)];
     }
 
     if (loadDetailsScreenModel.unitValue == 'PER_TON') {
@@ -48,13 +49,14 @@ class MyLoadsCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: space_2),
       child: Card(
+        surfaceTintColor: transparent,
         color: loadDetailsScreenModel.status == "EXPIRED"
             ? cancelledBiddingBackground
             : Colors.white,
         elevation: 3,
         child: Container(
           padding:
-          EdgeInsets.only(bottom: space_2, left: space_2, right: space_2),
+              EdgeInsets.only(bottom: space_2, left: space_2, right: space_2),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -62,7 +64,7 @@ class MyLoadsCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'postedon'.tr +': ${loadDetailsScreenModel.postLoadDate}',
+                    'postedon'.tr + ': ${loadDetailsScreenModel.postLoadDate}',
                     style: TextStyle(
                         fontSize: size_6,
                         color: veryDarkGrey,
@@ -70,28 +72,30 @@ class MyLoadsCard extends StatelessWidget {
                   ),
                   loadDetailsScreenModel.status == 'EXPIRED'
                       ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.more_vert, color: black),
-                  )
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.more_vert, color: black),
+                        )
                       : PopupMenuButton<popupMenuforloads>(
-                      offset: Offset(0, space_2),
-                      shape: RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(radius_2))),
-                      onSelected: (item) => onSelected(context, item),
-                      itemBuilder: (context) => [
-                        ...MenuItems.listItem
-                            .map(showEachItemFromList)
-                            .toList(),
-                      ]),
+                          offset: Offset(0, space_2),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(radius_2))),
+                          onSelected: (item) => onSelected(context, item),
+                          itemBuilder: (context) => [
+                                ...MenuItems.listItem
+                                    .map(showEachItemFromList)
+                                    .toList(),
+                              ]),
                 ],
               ),
               LoadEndPointTemplate(
                   text: "${loadDetailsScreenModel.loadingPointCity}".tr,
                   endPointType: 'loading'),
-              loadDetailsScreenModel.loadingPointCity2!= "NA"? LoadEndPointTemplate(
-                  text: "${loadDetailsScreenModel.loadingPointCity2}",
-                  endPointType: 'loading'):Container(),
+              loadDetailsScreenModel.loadingPointCity2 != "NA"
+                  ? LoadEndPointTemplate(
+                      text: "${loadDetailsScreenModel.loadingPointCity2}",
+                      endPointType: 'loading')
+                  : Container(),
               Container(
                 height: space_4 + 2,
                 padding: EdgeInsets.only(left: space_1 - 3),
@@ -102,9 +106,11 @@ class MyLoadsCard extends StatelessWidget {
               LoadEndPointTemplate(
                   text: "${loadDetailsScreenModel.unloadingPointCity}".tr,
                   endPointType: 'unloading'),
-              loadDetailsScreenModel.unloadingPointCity2!="NA"?LoadEndPointTemplate(
-                  text: "${loadDetailsScreenModel.unloadingPointCity2}".tr,
-                  endPointType: 'unloading'):Container(),
+              loadDetailsScreenModel.unloadingPointCity2 != "NA"
+                  ? LoadEndPointTemplate(
+                      text: "${loadDetailsScreenModel.unloadingPointCity2}".tr,
+                      endPointType: 'unloading')
+                  : Container(),
               SizedBox(
                 height: space_1,
               ),
@@ -114,13 +120,15 @@ class MyLoadsCard extends StatelessWidget {
                     margin: EdgeInsets.only(right: 8),
                     child: Image(
                       image:
-                      AssetImage('assets/images/TruckListEmptyImage.png'),
+                          AssetImage('assets/images/TruckListEmptyImage.png'),
                       height: 24,
                       width: 24,
                     ),
                   ),
                   Text(
-                    '${loadDetailsScreenModel.truckType}'.tr +'|''${loadDetailsScreenModel.noOfTyres} ' +'tyres'.tr,
+                    '${loadDetailsScreenModel.truckType}'.tr +
+                        '|' '${loadDetailsScreenModel.noOfTyres} ' +
+                        'tyres'.tr,
                     style: TextStyle(
                         fontSize: size_6, fontWeight: mediumBoldWeight),
                   ),
@@ -140,7 +148,9 @@ class MyLoadsCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${loadDetailsScreenModel.productType}'.tr +'| ${loadDetailsScreenModel.weight} ' +'tonne'.tr,
+                    '${loadDetailsScreenModel.productType}'.tr +
+                        '| ${loadDetailsScreenModel.weight} ' +
+                        'tonne'.tr,
                     style: TextStyle(
                         fontSize: size_6, fontWeight: mediumBoldWeight),
                   ),
@@ -151,39 +161,39 @@ class MyLoadsCard extends StatelessWidget {
               ),
               loadDetailsScreenModel.status == 'EXPIRED'
                   ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'loadexpired'.tr,
-                    // "Load Expired!",
-                    style: TextStyle(
-                      color: declineButtonRed,
-                      fontSize: size_8,
-                      fontWeight: mediumBoldWeight,
-                      fontFamily: 'montserrat',
-                    ),
-                  ),
-                  RepostButton(),
-                ],
-              )
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'loadexpired'.tr,
+                          // "Load Expired!",
+                          style: TextStyle(
+                            color: declineButtonRed,
+                            fontSize: size_8,
+                            fontWeight: mediumBoldWeight,
+                            fontFamily: 'montserrat',
+                          ),
+                        ),
+                        RepostButton(),
+                      ],
+                    )
                   : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  loadDetailsScreenModel.rate != 'NA'
-                      ? PriceContainer(
-                    rate: loadDetailsScreenModel.rate,
-                    unitValue: loadDetailsScreenModel.unitValue,
-                  )
-                      : SizedBox(),
-                  ViewBidsButton(
-                    loadId: loadDetailsScreenModel.loadId,
-                    loadingPointCity:
-                    loadDetailsScreenModel.loadingPointCity,
-                    unloadingPointCity:
-                    loadDetailsScreenModel.unloadingPointCity,
-                  ),
-                ],
-              ),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        loadDetailsScreenModel.rate != 'NA'
+                            ? PriceContainer(
+                                rate: loadDetailsScreenModel.rate,
+                                unitValue: loadDetailsScreenModel.unitValue,
+                              )
+                            : SizedBox(),
+                        ViewBidsButton(
+                          loadId: loadDetailsScreenModel.loadId,
+                          loadingPointCity:
+                              loadDetailsScreenModel.loadingPointCity,
+                          unloadingPointCity:
+                              loadDetailsScreenModel.unloadingPointCity,
+                        ),
+                      ],
+                    ),
             ],
           ),
         ),
@@ -192,7 +202,7 @@ class MyLoadsCard extends StatelessWidget {
   }
 
   PopupMenuItem<popupMenuforloads> showEachItemFromList(
-      popupMenuforloads item) =>
+          popupMenuforloads item) =>
       PopupMenuItem<popupMenuforloads>(
           value: item,
           child: Row(
@@ -217,16 +227,16 @@ class MyLoadsCard extends StatelessWidget {
 
   void onSelected(BuildContext context, popupMenuforloads item) {
     ProviderData providerData =
-    Provider.of<ProviderData>(context, listen: false);
+        Provider.of<ProviderData>(context, listen: false);
     NavigationIndexController navigationIndexController =
-    Get.find<NavigationIndexController>();
+        Get.find<NavigationIndexController>();
     switch (item) {
       case MenuItems.itemEdit:
         providerData.updateLoadingPointPostLoad(
             place: loadDetailsScreenModel.loadingPoint!,
             city: loadDetailsScreenModel.loadingPointCity!,
             state: loadDetailsScreenModel.loadingPointState!);
-        if(loadDetailsScreenModel.loadingPoint2!="NA"){
+        if (loadDetailsScreenModel.loadingPoint2 != "NA") {
           providerData.updateLoadingPointPostLoad2(
               place: loadDetailsScreenModel.loadingPoint2!,
               city: loadDetailsScreenModel.loadingPointCity2!,
@@ -241,14 +251,14 @@ class MyLoadsCard extends StatelessWidget {
           providerData
               .updateTruckNumber(int.parse(loadDetailsScreenModel.noOfTyres!));
         }
-        if(loadDetailsScreenModel.unloadingPoint2!="NA"){
+        if (loadDetailsScreenModel.unloadingPoint2 != "NA") {
           providerData.updateUnloadingPointPostLoad2(
               place: loadDetailsScreenModel.unloadingPoint2!,
               city: loadDetailsScreenModel.unloadingPointCity2!,
               state: loadDetailsScreenModel.unloadingPointState2!);
         }
         providerData.updatePassingWeightValue(
-            int.parse(loadDetailsScreenModel.weight!),false);
+            int.parse(loadDetailsScreenModel.weight!), false);
         providerData.updateTruckTypeValue(loadDetailsScreenModel.truckType!
             .replaceAll(" ", "_")
             .toUpperCase());
