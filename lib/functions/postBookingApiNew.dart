@@ -10,8 +10,6 @@ postBookingApiNew(LoadDetailsScreenModel? loadDetailsScreenModel, truckId,
     deviceId, driverName, driverPhoneNo) async {
   TransporterIdController tIdController = Get.find<TransporterIdController>();
   String now = DateFormat("dd-MM-yyyy").format(DateTime.now());
-  // String now = DateFormat("dd-MM-yyyy").format(DateTime.now().subtract(Duration(hours: 5, minutes: 30))
-  //     .toIso8601String());
   var jsonData;
   try {
     Map datanew = {
@@ -31,7 +29,9 @@ postBookingApiNew(LoadDetailsScreenModel? loadDetailsScreenModel, truckId,
       "completed": false,
       "bookingDate": now,
       "completedDate": null,
-      "timestamp": now
+      "timestamp": now,
+      //companyName is added in the body section of post booking Apis
+      "companyName": loadDetailsScreenModel.companyName,
     };
     String body = json.encode(datanew);
     final String bookingApiUrl = dotenv.get('bookingApiUrl').toString();
@@ -42,17 +42,9 @@ postBookingApiNew(LoadDetailsScreenModel? loadDetailsScreenModel, truckId,
         body: body);
     print(response.body);
     jsonData = json.decode(response.body);
-
-    // if (jsonData["bookingId"] != null) {
-    //   Get.snackbar('Booking Successful', '', snackPosition: SnackPosition.TOP);
-    // } else
-    //   Get.snackbar('Booking Unsuccessful', '',
-    //       snackPosition: SnackPosition.TOP);
     if (response.statusCode == 201) {
-      print(response);
       return "successful";
     } else if (response.statusCode == 409) {
-      print("conflict");
       return "conflict";
     } else {
       return "unsuccessful";
