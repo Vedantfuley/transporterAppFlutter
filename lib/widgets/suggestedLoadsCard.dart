@@ -43,7 +43,8 @@ class SuggestedLoadsCard extends StatelessWidget {
                   loadDetails: loadDetailsScreenModel,
                 ),
                 LoadCardFooter(
-                    loadPosterCompanyName: loadDetailsScreenModel.companyName,
+                    loadPosterCompanyName:
+                        loadDetailsScreenModel.loadPosterCompanyName,
                     loadPosterPhoneNo: loadDetailsScreenModel.phoneNo)
               ],
             ),
