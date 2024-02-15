@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:liveasy/models/loadPosterModel.dart';
 
-//duplicate file ig can be deleted later
+//This api is used for fetching the company details from firebase, transporterApis or shipperApis
 getLoadPosterDetailsFromApi({required String loadPosterId}) async {
   var jsonData;
 
@@ -14,6 +14,7 @@ getLoadPosterDetailsFromApi({required String loadPosterId}) async {
   final String shipperApiUrl = dotenv.get('shipperApiUrl').toString();
 
   // loadPosterId = loadPosterId;
+  //if the postloadId contains Company then the company details are fetched from firebase shipper table
   try {
     if (loadPosterId.contains("Company")) {
       final DocumentReference documentRef =
@@ -54,6 +55,7 @@ getLoadPosterDetailsFromApi({required String loadPosterId}) async {
         return loadPosterModel;
       }
     }
+    //if the postloadId contains transporter in it the company details are fetched from the transporter Api
     if (loadPosterId.contains("transporter")) {
       http.Response response =
           await http.get(Uri.parse(transporterApiUrl + "/$loadPosterId"));
@@ -82,6 +84,7 @@ getLoadPosterDetailsFromApi({required String loadPosterId}) async {
           jsonData["accountVerificationInProgress"];
       return loadPosterModel;
     }
+    //if the postloadId contains shipper in it the company details are fetched from the shipper Api
     if (loadPosterId.contains("shipper")) {
       http.Response response =
           await http.get(Uri.parse(shipperApiUrl + "/$loadPosterId"));
