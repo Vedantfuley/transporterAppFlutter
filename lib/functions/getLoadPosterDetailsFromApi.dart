@@ -51,8 +51,6 @@ getLoadPosterDetailsFromApi({required String loadPosterId}) async {
         loadPosterModel.loadPosterCompanyApproved = true;
         loadPosterModel.loadPosterApproved = true;
         loadPosterModel.loadPosterAccountVerificationInProgress = false;
-
-        print(jsonData);
         return loadPosterModel;
       }
     }
