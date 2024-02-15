@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/elevation.dart';
 import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/controller/transporterIdController.dart';
@@ -34,6 +35,7 @@ class SuggestedLoadsCard extends StatelessWidget {
             }
           },
           child: Card(
+            surfaceTintColor: transparent,
             elevation: elevation_2,
             child: Column(
               children: [
@@ -41,8 +43,7 @@ class SuggestedLoadsCard extends StatelessWidget {
                   loadDetails: loadDetailsScreenModel,
                 ),
                 LoadCardFooter(
-                    loadPosterCompanyName:
-                        loadDetailsScreenModel.loadPosterCompanyName,
+                    loadPosterCompanyName: loadDetailsScreenModel.companyName,
                     loadPosterPhoneNo: loadDetailsScreenModel.phoneNo)
               ],
             ),

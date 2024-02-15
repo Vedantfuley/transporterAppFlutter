@@ -3,6 +3,7 @@ import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/radius.dart';
 import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/controller/SelectedDriverController.dart';
+import 'package:liveasy/functions/loadApis/findLoadByLoadID.dart';
 import 'package:liveasy/functions/loadApis/runSuggestedLoadApiWithPageNo.dart';
 import 'package:liveasy/models/WidgetLoadDetailsScreenModel.dart';
 import 'package:liveasy/models/loadDetailsScreenModel.dart';
@@ -42,13 +43,12 @@ class _LoadDetailsScreenState extends State<LoadDetailsScreen> {
   runGetDetailsByPostLoadID() async {
     widgetLoadDetailsScreenModel = await getLoadDetailsByPostLoadID(
         loadPosterId: widget.loadDetailsScreenModel.postLoadId.toString());
-    print(
-        "Testing details---------->${widgetLoadDetailsScreenModel.loadPosterId.toString()}");
     setState(() {
       loading = false;
     });
-    print(
-        "widget load details screen------------------>${widget.loadDetailsScreenModel.loadId}");
+    //this will be used for showing the shipper name in booking screens
+    loadDetailsScreenModel.companyName =
+        widgetLoadDetailsScreenModel.loadPosterCompanyName;
   }
 
   Future<void> imageUrl() async {
@@ -59,7 +59,6 @@ class _LoadDetailsScreenState extends State<LoadDetailsScreen> {
     // if(imageLinks.length == 0){
     //   imageLinks.add("https://e7.pngegg.com/pngimages/84/165/png-clipart-united-states-avatar-organization-information-user-avatar-service-computer-wallpaper-thumbnail.png");
     // }
-    print("fffffff ${imageLinks}");
     setState(() {});
   }
 
@@ -134,6 +133,7 @@ class _LoadDetailsScreenState extends State<LoadDetailsScreen> {
                                     borderRadius:
                                         BorderRadius.circular(radius_2 - 2)),
                                 child: Card(
+                                  surfaceTintColor: transparent,
                                   color: white,
                                   child: Row(
                                     mainAxisAlignment:
@@ -155,6 +155,7 @@ class _LoadDetailsScreenState extends State<LoadDetailsScreen> {
                           ],
                         ),
                         Card(
+                          surfaceTintColor: transparent,
                           elevation: 5,
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(
@@ -167,7 +168,7 @@ class _LoadDetailsScreenState extends State<LoadDetailsScreen> {
                                   child: LocationDetailsLoadDetails(
                                     loadDetails: {
                                       "loadDate": widget
-                                          .loadDetailsScreenModel.loadDate,
+                                          .loadDetailsScreenModel.postLoadDate,
                                       "loadingPoint": widget
                                           .loadDetailsScreenModel
                                           .loadingPoint

@@ -34,6 +34,7 @@ class LoadDetailsScreenModel {
   String? postLoadDate;
   List? loadingPointGeoId;
   List? unloadingPointGeoId;
+  String? companyName;
 
   LoadDetailsScreenModel({
     this.loadId,
@@ -71,5 +72,6 @@ class LoadDetailsScreenModel {
     this.postLoadDate,
     this.loadingPointGeoId,
     this.unloadingPointGeoId,
+    this.companyName,
   });
 }
