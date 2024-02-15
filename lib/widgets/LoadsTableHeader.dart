@@ -165,7 +165,7 @@ Container LoadsTableHeader(
             flex: 3,
             child: Center(
                 child: Text(
-              (loadingStatus == 'MyLoads') ? "Status" : 'Transporter',
+              (loadingStatus == 'MyLoads') ? "Status" : 'Shipper',
               style: GoogleFonts.montserrat(
                 color: black,
                 fontWeight: FontWeight.w600,
