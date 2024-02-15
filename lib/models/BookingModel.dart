@@ -17,24 +17,27 @@ class BookingModel {
   String? bookingDate;
   String? completedDate;
   int? deviceId;
+  String? companyName;
 
-  BookingModel(
-      {this.bookingId,
-      this.loadId,
-      this.transporterId,
-      this.postLoadId,
-      this.truckId,
-      this.rate,
-      this.unitValue,
-      this.cancel,
-      this.completed,
-      this.bookingDate,
-      this.completedDate,
-      this.rateString,
-      this.deviceId,
-      this.unloadingPointCity,
-      this.loadingPointCity,
-      this.truckNo,
-      this.driverName,
-      this.driverPhoneNum});
+  BookingModel({
+    this.bookingId,
+    this.loadId,
+    this.transporterId,
+    this.postLoadId,
+    this.truckId,
+    this.rate,
+    this.unitValue,
+    this.cancel,
+    this.completed,
+    this.bookingDate,
+    this.completedDate,
+    this.rateString,
+    this.deviceId,
+    this.unloadingPointCity,
+    this.loadingPointCity,
+    this.truckNo,
+    this.driverName,
+    this.driverPhoneNum,
+    this.companyName,
+  });
 }

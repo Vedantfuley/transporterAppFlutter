@@ -12,10 +12,7 @@ onGoingOrdersApiCall(int i) async {
   final String bookingApiUrl = dotenv.get('bookingApiUrl');
   TransporterIdController transporterIdController =
       Get.find<TransporterIdController>();
-  // List<BookingModel> modelList = [];
   List<OngoingCardModel?> modelList = [];
-  // http.Response response = await http.get(Uri.parse(
-  //     '$bookingApiUrl?postLoadId=${transporterIdController.transporterId.value}&completed=false&cancel=false&pageNo=$i'));
   http.Response response = await http.get(Uri.parse(
       '$bookingApiUrl?transporterId=${transporterIdController.transporterId.value}&completed=false&cancel=false&pageNo=$i'));
 
@@ -25,9 +22,6 @@ onGoingOrdersApiCall(int i) async {
     bookingModel.bookingDate =
         json['bookingDate'] != null ? json['bookingDate'] : 'NA';
     bookingModel.loadId = json['loadId'] != null ? json['loadId'] : 'NA';
-    // bookingModel.transporterId =
-    //     json['transporterId'] != null ? json['transporterId'] : 'NA';
-    // bookingModel.truckId = json['truckId'] != null ? json['truckId'] : 'NA';
     bookingModel.cancel = json['cancel'] != null ? json['cancel'] : false;
     bookingModel.completed =
         json['completed'] != null ? json['completed'] : false;
@@ -54,18 +48,13 @@ onGoingOrdersApiCall(int i) async {
     bookingModel.unloadingPointCity =
         json['unloadingPointCity'] != null ? json['unloadingPointCity'] : 'NA';
     bookingModel.truckNo = json['truckNo'] != null ? json['truckNo'] : 'NA';
-    // bookingModel.deviceId = json['deviceId'] != null ? json['deviceId'] : 'NA';
     bookingModel.deviceId = json['deviceId'] != null
         ? json['deviceId'] == 'NA'
             ? 80
             : int.parse(json["deviceId"])
         : 80;
-//     print(bookingModel);
-
-// // var loadAllDataModel = BookingModel(bookingModel);
-//     modelList.add(bookingModel);
-
-    // modelList.add(bookingModel);
+    bookingModel.companyName =
+        json['companyName'] != null ? json['companyName'] : 'NA';
     var loadAllDataModel = await loadAllOnGoingOrdersData(bookingModel);
     modelList.add(loadAllDataModel);
   }
